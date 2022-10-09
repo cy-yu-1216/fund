@@ -19,35 +19,38 @@ class RequestBase {
     )
 
     //全局拦截
-    this.instance.interceptors.request.use(
-      //onFulfilled
-      (res: AxiosRequestConfig) => {
-        // console.log(res)
-        return res
-      },
-      //onRejected
-      (err: AxiosRequestConfig) => {
-        return err
-      }
-    )
-    this.instance.interceptors.response.use(
-      //onFulfilled
-      (res: AxiosRequestConfig) => {
-        // console.log(res)
-        return res
-      },
-      //onRejected
-      (err: AxiosRequestConfig) => {
-        return err
-      }
-    )
+    // this.instance.interceptors.request.use(
+    //   //onFulfilled
+    //   (res: AxiosRequestConfig) => {
+    //     return res
+    //   },
+    //   //onRejected
+    //   (err: AxiosRequestConfig) => {
+    //     return err
+    //   }
+    // )
+    // this.instance.interceptors.response.use(
+    //   //onFulfilled
+    //   (res: AxiosRequestConfig) => {
+    //     return res
+    //   },
+    //   //onRejected
+    //   (err: AxiosRequestConfig) => {
+    //     return err
+    //   }
+    // )
   }
 
   request<T = any>(config: handleRequest<T>): Promise<T> {
     return new Promise((resolve, reject) => {
-      this.instance.request(config).then((res) => {
-        resolve(res)
-      })
+      this.instance
+        .request(config)
+        .then((res) => {
+          resolve(res)
+        })
+        .catch((error) => {
+          reject(error)
+        })
     })
   }
 

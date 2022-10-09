@@ -1,15 +1,18 @@
 import RequestBase from './request'
 import { ElMessage } from 'element-plus'
 import localCache from '@/utils/cache'
+
 export const requestInstance = new RequestBase({
   // baseURL: 'http://121.43.145.130/',
   // baseURL: 'http://116.62.204.86:7610/', // 请求的接口
+  // baseURL: import.meta.env.VITE_BASE_URL,
+  // baseURL: 'http://152.32.131.147:8088/',
   timeout: 10000,
   interceptors: {
     requestInterceptor: (config) => {
       const token = localCache.getCache('token')
       if (token && config.headers) {
-        config.headers['factorykey'] = token
+        config.headers['Access-Token'] = token
       }
       return config
     },
@@ -21,13 +24,14 @@ export const requestInstance = new RequestBase({
       })
     },
     responseInterceptor(res) {
-      console.log(res)
-
-      return res
+      console.log('sdf' + res)
+      const data = res.data
+      if (data.code == '200') {
+        return data.body
+      }
+      return Promise.reject(data)
     },
     responseInterceptorCatch(err) {
-      console.log(err)
-
       return err
     }
   }
