@@ -6,12 +6,21 @@ export default ({ mode }) => {
   const env = loadEnv(mode, process.cwd())
   return defineConfig({
     plugins: [vue()],
+    // css: {
+    //   preprocessorOptions: {
+    //     scss: {
+    //       additionalData: '@import "./src/styles/index.scss";'
+    //     }
+    //   }
+    // },
+
     resolve: {
       // +++
       alias: {
         '@': resolve(__dirname, './src') // +++
       } // +++
     },
+
     server: {
       port: 5718,
       cors: true, // 默认启用并允许任何源
