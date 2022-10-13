@@ -1,0 +1,9 @@
+.el-menu {
+  border: none !important;
+}
+.el-menu--collapse > .el-menu-item > span,
+.el-menu--collapse > .el-sub-menu > .el-sub-menu__title > span {
+  width: auto !important;
+  height: auto !important;
+  visibility: inherit !important;
+}
