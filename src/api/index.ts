@@ -24,7 +24,8 @@ export const requestInstance = new RequestBase({
       })
     },
     responseInterceptor(res) {
-      console.log('sdf' + res)
+      console.log(res)
+
       const data = res.data
       if (data.code == '200') {
         return data.body
