@@ -1,0 +1,40 @@
+// input中的prepend
+.el-input-group__append,
+.el-input-group__prepend {
+  background-color: #ffff !important;
+}
+
+.el-input__inner {
+  height: 34px !important;
+}
+
+.el-form-item {
+  margin-bottom: 18px;
+
+  label {
+    width: 90px !important;
+  }
+  .el-form-item__label {
+    line-height: 34px !important;
+    height: 34px !important;
+  }
+  .el-form-item__content {
+    width: 1px; //不知道为什么  datepick就正常了
+    margin-left: 0px !important;
+  }
+  .el-input,
+  .el-select {
+    margin-bottom: 3px;
+    height: 34px;
+  }
+  .el-select,
+  .el-cascader {
+    width: 100%;
+  }
+}
+
+// .el-dialog {
+//   .el-form-item {
+//     margin-bottom: 18px;
+//   }
+// }
