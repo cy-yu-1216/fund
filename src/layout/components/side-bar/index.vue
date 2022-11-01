@@ -1,12 +1,10 @@
 <template>
   <div class="nav">
-    <div>头部标识</div>
+    <div>FUND</div>
     <el-menu
-      default-active="2"
-      :collapse="isCollapse"
+      :default-active="$route.path"
       class="menu"
-      @open="handleOpen"
-      @close="handleClose"
+      active-text-color="#409EFF"
     >
       <el-scrollbar height="100%">
         <side-bar-item :route-list="routeList" />
@@ -16,20 +14,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { reactive, computed } from 'vue'
 import sideBarItem from './side-bar-item.vue'
 import { routes } from '@/router/index'
-import localCache from '@/utils/cache'
+import { appMainStore } from '@/store/app'
 //折叠面板展开收起
-let isCollapse = ref(localCache.getCache('panelStatus') ? true : false)
-//打开面板
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
-//关闭面板
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
+// let isCollapse = ref(localCache.getCache('panelStatus') ? true : false)
+const status = computed(() => appMainStore().getPanelStatus)
+const isCollapse = computed(() => !status.value)
 //获取路由
 const routeList: any[] = reactive([])
 const homeRouter = routes.find((res) => res.name == 'home')
@@ -40,14 +32,15 @@ if (homeRouter) {
 
 <style scoped lang="scss">
 .nav {
-  width: 200px;
-  // background-color: aliceblue;
   height: 100%;
+  width: 150px;
   & > div {
     height: 60px;
+    line-height: 60px;
+    display: flex;
+    justify-content: center;
   }
   .menu {
-    width: 100%;
     height: calc(100% - 60px);
   }
 }

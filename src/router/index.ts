@@ -4,12 +4,20 @@ export const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'login',
-    redirect: '/login'
+    redirect: '/login',
+    component: () => import('@/views/login/login.vue'),
+    children: [
+      {
+        path: '/login',
+        name: 'login',
+        component: () => import('@/views/login/login.vue')
+      }
+    ]
   },
   {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/views/login/login.vue')
+    path: '/register',
+    name: 'register',
+    component: () => import('@/views/register/register.vue')
   },
   {
     path: '/home',
@@ -20,26 +28,28 @@ export const routes: RouteRecordRaw[] = [
         path: '/fund',
         name: 'fund',
         meta: {
-          title: 'fund'
+          title: 'fund',
+          icon: 'el-icon-tools'
         },
-        component: () => import('@/views/fund-1/index.vue'),
         redirect: '/1',
         children: [
           {
             path: '/1',
             name: '1',
             meta: {
-              title: 'fund1-1'
+              title: '1',
+              icon: 'el-icon-tools'
             },
-            component: () => import('@/views/fund-1/1.vue'),
+            redirect: '/1-1',
+            //不加component 要不然子路由会跳转不到相应页面的
             children: [
               {
                 path: '/1-1',
                 name: '1-1',
                 meta: {
-                  title: 'fund1-1'
+                  title: 'fund1-1-1'
                 },
-                component: () => import('@/views/fund-1/1.vue')
+                component: () => import('@/views/fund/z.vue')
               }
             ]
           },
@@ -49,7 +59,7 @@ export const routes: RouteRecordRaw[] = [
             meta: {
               title: 'fund1-2'
             },
-            component: () => import('@/views/fund-1/2.vue')
+            component: () => import('@/views/fund/2.vue')
           }
         ]
       },

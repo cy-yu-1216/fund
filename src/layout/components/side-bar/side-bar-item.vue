@@ -1,19 +1,27 @@
 <template>
   <template v-for="item in routeList">
+    <!-- 包含多级菜单的，递归展示 -->
     <el-sub-menu
       :index="item.path"
       v-if="item.children && item.children.length"
     >
       <template #title>
+        <!-- <el-icon><location /></el-icon> -->
         <span>{{ item.meta?.title }}</span>
       </template>
       <el-menu-item-group>
         <side-bar-item :route-list="item.children" />
       </el-menu-item-group>
     </el-sub-menu>
-    <!-- <router-link> -->
-    <el-menu-item :index="item.path" v-else
-      ><span>{{ item.meta?.title }}</span></el-menu-item
+    <!-- 叶子路由 -->
+    <router-link :to="item.path">
+      <el-menu-item
+        :index="item.path"
+        v-if="!item.children || !item.children.length"
+      >
+        <!-- <el-icon><location /></el-icon> -->
+        <span>{{ item.meta?.title }}</span></el-menu-item
+      ></router-link
     >
   </template>
 </template>
