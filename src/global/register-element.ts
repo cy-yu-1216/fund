@@ -6,9 +6,22 @@ import {
   ElMenuItem,
   ElMenuItemGroup,
   ElSubMenu,
-  ElScrollbar
+  ElScrollbar,
+  ElIcon,
+  ElTabs,
+  ElTabPane,
+  ElForm,
+  ElFormItem,
+  ElCol,
+  ElRow,
+  ElSelect,
+  ElOption,
+  ElDialog,
+  ElDatePicker,
+  ElCascader
 } from 'element-plus'
 import 'element-plus/dist/index.css' //基础样式
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import type { App } from 'vue'
 const components = [
   ElButton,
@@ -18,9 +31,26 @@ const components = [
   ElMenuItem,
   ElMenuItemGroup,
   ElSubMenu,
-  ElScrollbar
+  ElScrollbar,
+  ElIcon,
+  ElTabs,
+  ElTabPane,
+  ElForm,
+  ElFormItem,
+  ElCol,
+  ElRow,
+  ElSelect,
+  ElOption,
+  ElDialog,
+  ElDatePicker,
+  ElCascader
 ]
 export default function (app: App): void {
+  //图标
+  for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+  }
+  //组件
   for (const component of components) {
     app.component(component.name, component)
   }

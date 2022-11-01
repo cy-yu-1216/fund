@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import localCache from '@/utils/cache'
-import { login } from '@/netApi/common'
+import { login } from '@/api/common'
 // interface UserMsg {
 //   userName: ''
 //   userId: ''
@@ -23,24 +23,18 @@ export const userMsgStore = defineStore('userMsg', {
   },
   actions: {
     //登录
-    loginUser(username: string, password: string) {
-      return new Promise((resolve, reject) => {
-        //存储token
-        localCache.setCache('token', '12asdas')
-        localCache.setCache('panelStatus', false)
-        resolve(12)
+    loginUser(loginMsg: LoginType) {
+      return new Promise(async (resolve, reject) => {
+        try {
+          let res = await login(loginMsg)
+          //存储token
+          localCache.setCache('token', res.token)
+          this.userName = res.userName
+          resolve(res)
+        } catch (error) {
+          reject(error)
+        }
       })
-      // return new Promise(async (resolve, reject) => {
-      //   try {
-      //     let res = await login({ username, password })
-      //     //存储token
-      //     localCache.setCache('token', res.token)
-      //     this.userName = res.userName
-      //     resolve(res)
-      //   } catch (error) {
-      //     // reject(error)
-      //   }
-      // })
     }
   }
 })
