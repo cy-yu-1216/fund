@@ -1,5 +1,5 @@
 <template>
-  <div>fund-1</div>
+  <div>交易记录</div>
 </template>
 
 <script setup lang="ts"></script>

@@ -16,6 +16,3 @@ const props = defineProps({
 const propsRefs = toRefs(props)
 const icon = computed(() => `#icon-${propsRefs.iconName.value}`)
 </script>
-
-<style scoped lang="scss"></style>
-s

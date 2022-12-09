@@ -1,16 +1,19 @@
 <template>
   <div class="app-wrapper">
-    <side-bar />
+    <header-bar />
     <div class="main-container">
-      <nav-bar />
-      <app-main />
+      <router-view v-slot="{ Component, route }">
+        <transition name="fade-transform" mode="out-in">
+          <keep-alive :key="(route.name as string)">
+            <component :is="Component" />
+          </keep-alive>
+        </transition>
+      </router-view>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import sideBar from './components/side-bar/index.vue'
-import navBar from './components/nav-bar/index.vue'
-import appMain from './components/app-main/index.vue'
+import headerBar from './header-bar.vue'
 </script>
 
 <style scoped lang="scss">
@@ -18,11 +21,8 @@ import appMain from './components/app-main/index.vue'
   position: relative;
   width: 100%;
   height: 100%;
-  display: flex;
   .main-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+    height: calc(100% - 58px);
   }
 }
 </style>

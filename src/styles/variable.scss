@@ -1,0 +1,11 @@
+$theme: #d9534f;
+$orange: #ffad60;
+$yellow: #ffeead;
+$green: #96ceb4;
+$line: rgb(0 0 0 / 10%);
+$font: rgb(0 0 0 / 70%);
+:export {
+  theme: $theme;
+  line: $line;
+  font: $font;
+}

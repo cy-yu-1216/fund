@@ -28,8 +28,8 @@
             autocomplete="off"
             placeholder="请输入密码"
           >
-            <template #prepend> <icon-svg iconName="ziyuanxhdpi" /> </template
-          ></el-input>
+            <template #prepend> <icon-svg iconName="ziyuanxhdpi" /> </template>
+          </el-input>
         </el-form-item>
       </el-form>
       <div class="btn">
@@ -99,7 +99,7 @@ const register = () => {
       font-size: 28px;
       font-weight: 800;
     }
-    s .ruleForm {
+    .ruleForm {
       width: 100%;
       box-sizing: border-box;
     }

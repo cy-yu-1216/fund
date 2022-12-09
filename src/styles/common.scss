@@ -28,6 +28,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  color: $font;
 }
 #app {
   margin: 0 auto;
@@ -50,6 +51,20 @@ body {
   display: flex;
   > div {
     flex: 1;
+  }
+}
+.container {
+  height: 100%;
+  .top {
+    padding: 0 10px;
+    line-height: 60px;
+    height: 60px;
+    .el-input {
+      max-width: 220px;
+    }
+  }
+  .content {
+    height: calc(100% - 80px);
   }
 }
 

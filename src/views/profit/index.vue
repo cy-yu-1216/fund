@@ -1,5 +1,7 @@
 <template>
-  <router-view />
+  <div>收益</div>
 </template>
+
 <script setup lang="ts"></script>
-<style></style>
+
+<style scoped lang="scss"></style>

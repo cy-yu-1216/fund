@@ -20,56 +20,60 @@ export const routes: RouteRecordRaw[] = [
     component: () => import('@/views/register/register.vue')
   },
   {
-    path: '/home',
+    path: '/',
     name: 'home',
+    redirect: '/home',
     component: () => import('@/layout/index.vue'),
     children: [
       {
-        path: '/fund',
-        name: 'fund',
+        path: '/home',
+        name: 'home',
         meta: {
-          title: 'fund',
-          icon: 'el-icon-tools'
+          title: '首页'
         },
-        redirect: '/1',
+        component: () => import('@/views/home/index.vue')
+      },
+      {
+        path: '/my-choice',
+        name: 'my-choice',
+        meta: {
+          title: '我的自选'
+        },
+        component: () => import('@/views/my-choice/index.vue')
+      },
+      {
+        path: '/transaction',
+        name: 'transaction',
+        meta: {
+          title: '交易记录'
+        },
+        component: () => import('@/views/transaction/index.vue'),
         children: [
           {
-            path: '/1',
-            name: '1',
+            path: '/add-transaction',
+            name: 'add-transaction',
             meta: {
-              title: '1',
-              icon: 'el-icon-tools'
+              title: '新增交易记录'
             },
-            redirect: '/1-1',
-            //不加component 要不然子路由会跳转不到相应页面的
-            children: [
-              {
-                path: '/1-1',
-                name: '1-1',
-                meta: {
-                  title: 'fund1-1-1'
-                },
-                component: () => import('@/views/fund/z.vue')
-              }
-            ]
-          },
-          {
-            path: '/2',
-            name: '2',
-            meta: {
-              title: 'fund1-2'
-            },
-            component: () => import('@/views/fund/2.vue')
+            component: () => import('@/views/transaction/add-transaction.vue')
           }
         ]
       },
       {
-        path: '/fund2',
-        name: 'fund2',
+        path: '/profit',
+        name: 'profit',
         meta: {
-          title: 'fund2'
+          title: '我的收益'
         },
-        component: () => import('@/views/fund-2/index.vue')
+        component: () => import('@/views/profit/index.vue')
+      },
+      {
+        path: '/remind',
+        name: 'remind',
+        meta: {
+          title: '我的提醒'
+        },
+        component: () => import('@/views/remind/index.vue')
       }
     ]
   },
@@ -89,3 +93,34 @@ const router = createRouter({
   history: createWebHashHistory()
 })
 export default router
+//  redirect: '/1',
+//         children: [
+//           {
+//             path: '/1',
+//             name: '1',
+//             meta: {
+//               title: '1',
+//               icon: 'el-icon-tools'
+//             },
+//             redirect: '/1-1',
+//             //不加component 要不然子路由会跳转不到相应页面的
+//             children: [
+//               {
+//                 path: '/1-1',
+//                 name: '1-1',
+//                 meta: {
+//                   title: 'fund1-1-1'
+//                 },
+//                 component: () => import('@/views/fund/z.vue')
+//               }
+//             ]
+//           },
+//           {
+//             path: '/2',
+//             name: '2',
+//             meta: {
+//               title: 'fund1-2'
+//             },
+//             component: () => import('@/views/fund/2.vue')
+//           }
+//         ]
