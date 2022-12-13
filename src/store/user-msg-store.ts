@@ -1,10 +1,7 @@
 import { defineStore } from 'pinia'
 import localCache from '@/utils/cache'
 import { login } from '@/api/common'
-// interface UserMsg {
-//   userName: ''
-//   userId: ''
-// }
+
 export const userMsgStore = defineStore('userMsg', {
   state: () => {
     return {
@@ -37,4 +34,4 @@ export const userMsgStore = defineStore('userMsg', {
       })
     }
   }
-})
+})()

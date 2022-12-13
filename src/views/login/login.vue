@@ -60,7 +60,6 @@ const rules = reactive({
 })
 
 /**************登录****************/
-const user = userMsgStore()
 const router = useRouter()
 const submitForm = async () => {
   if (!formRef.value) {
@@ -69,7 +68,7 @@ const submitForm = async () => {
   formRef.value.validate(async (valid) => {
     if (valid) {
       try {
-        await user.loginUser(ruleForm)
+        await userMsgStore.loginUser(ruleForm)
         //登录成功
         router.push('/home')
         ElMessage.success('登录成功')
@@ -105,7 +104,7 @@ const register = () => {
     }
     .btn {
       width: 100%;
-      ::v-deep .el-buttons {
+      ::v-deep(.el-buttons) {
         width: 100%;
       }
       .register {
@@ -122,7 +121,7 @@ const register = () => {
   .el-input {
     margin-bottom: 3px;
   }
-  ::v-deep .el-form-item .el-input {
+  ::v-deep(.el-form-item .el-input) {
     height: 42px !important;
     line-height: 42px !important;
   }

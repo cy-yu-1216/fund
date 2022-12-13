@@ -27,10 +27,9 @@
 </template>
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import { appMainStore } from '@/store/app'
+import { mainStore } from '@/store/main-store'
 //改变展开收起
-const appMain = appMainStore()
-let panelStatus = ref(appMain.getPanelStatus)
+// let panelStatus = ref(mainStore.getPanelStatus)
 let editableTabsValue = ref('1')
 let editableTabs = ref([
   {
@@ -50,11 +49,11 @@ const handleTabsEdit = (item: any) => {
 }
 const handleTabsClick = (item: any) => {}
 const handlePanel = () => {
-  const status = !appMain.getPanelStatus
-  //设置当前所在页面面板状态
-  panelStatus.value = status
-  //设置缓存及store中设置面板
-  appMain.setPanelStatus(status)
+  // const status = !mainStore.getPanelStatus
+  // //设置当前所在页面面板状态
+  // panelStatus.value = status
+  // //设置缓存及store中设置面板
+  // mainStore.setPanelStatus(status)
 }
 </script>
 

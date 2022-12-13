@@ -17,11 +17,11 @@
 import { reactive, computed } from 'vue'
 import sideBarItem from './side-bar-item.vue'
 import { routes } from '@/router/index'
-import { appMainStore } from '@/store/app'
+import { mainStore } from '@/store/main-store'
 //折叠面板展开收起
 // let isCollapse = ref(localCache.getCache('panelStatus') ? true : false)
-const status = computed(() => appMainStore().getPanelStatus)
-const isCollapse = computed(() => !status.value)
+// const status = computed(() => mainStore.getPanelStatus)
+// const isCollapse = computed(() => !status.value)
 //获取路由
 const routeList: any[] = reactive([])
 const homeRouter = routes.find((res) => res.name == 'home')
