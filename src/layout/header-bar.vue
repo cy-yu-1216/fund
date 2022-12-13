@@ -40,6 +40,7 @@
 
 <script setup lang="ts">
 import { routes } from '@/router/index'
+import { mainStore } from '@/store/main-store'
 import { useRouter } from 'vue-router'
 import { onMounted, reactive, ref } from 'vue'
 //拿到导航列表
@@ -49,10 +50,9 @@ const homeRouter = routes.find((res) => res.name == 'home')
 if (homeRouter) {
   navList.push(...(homeRouter.children as RouteRecordRaw[]))
 }
-console.log()
 
 //当前tab
-let activeItem = ref('home')
+let activeItem = ref(mainStore.activeRoute)
 //路由跳转
 const router = useRouter()
 const handleNav = (navItem: any) => {
@@ -60,6 +60,7 @@ const handleNav = (navItem: any) => {
   activeItem.value = routerName
   isActiveNav.value = false
   router.push({ path: routerName })
+  mainStore.setActiveRoute(navItem.name)
 }
 
 //点击logo 切换显示
@@ -96,7 +97,7 @@ nav {
   align-items: center;
   padding: 0 10px 0 2px;
   justify-content: space-between;
-  box-shadow: 1px 1px 1px rgb(0 0 0 / 10%);
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
   .logo {
     width: 100px;
     cursor: pointer;

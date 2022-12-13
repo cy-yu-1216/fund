@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, toRefs } from 'vue'
+import { toRefs } from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
 const props = defineProps({
   routeList: {
