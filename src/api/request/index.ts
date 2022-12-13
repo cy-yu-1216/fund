@@ -45,7 +45,7 @@ class RequestBase {
     return new Promise((resolve, reject) => {
       this.instance
         .request(config)
-        .then((res) => {
+        .then((res: any) => {
           resolve(res)
         })
         .catch((error) => {

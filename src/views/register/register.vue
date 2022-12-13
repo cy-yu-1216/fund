@@ -264,7 +264,7 @@ const back = () => {
     .btn {
       margin-top: 8px;
       width: 100%;
-      ::v-deep .el-buttons {
+      ::v-deep(.el-buttons) {
         width: 100%;
       }
       .register {
