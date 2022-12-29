@@ -19,7 +19,8 @@ import {
   ElDialog,
   ElDatePicker,
   ElCascader,
-  ElPopover
+  ElPopover,
+  ElTableColumn
 } from 'element-plus'
 import 'element-plus/dist/index.css' //基础样式
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
@@ -45,7 +46,8 @@ const components = [
   ElDialog,
   ElDatePicker,
   ElCascader,
-  ElPopover
+  ElPopover,
+  ElTableColumn
 ]
 export default function (app: App): void {
   //图标

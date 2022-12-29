@@ -34,6 +34,9 @@ body {
   margin: 0 auto;
   height: 100vh;
   font-size: 14px;
+  // 取消移动端长按事件
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none;
 }
 .main {
   height: 100%;
@@ -53,54 +56,40 @@ body {
     flex: 1;
   }
 }
-.container {
+.app-wrapper {
+  position: relative;
+  width: 100%;
   height: 100%;
-  padding: 10px;
-  box-sizing: border-box;
+  .main-container {
+    height: calc(100% - 58px);
+  }
 
-  .content {
-    height: calc(100% - 40px);
+  //字体靠右 排序靠右
+  .el-table .cell {
+    display: flex;
+    align-items: center;
+    text-align: right;
+  }
+  thead tr {
+    font-size: 12px;
+  }
+  .container {
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+
+    .content {
+      height: calc(100% - 48px);
+      .list-table {
+        height: 100%;
+        .el-table {
+          height: 100%;
+        }
+        .el-table__inner-wrapper {
+          border-left: 1px solid $line;
+          border-right: 1px solid $line;
+        }
+      }
+    }
   }
 }
-
-/* h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-} */
-/* button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-.card {
-  padding: 2em;
-} */
-
-/*
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
