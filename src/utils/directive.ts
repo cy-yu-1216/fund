@@ -1,5 +1,8 @@
-import type { App } from 'vue'
+import { App, onMounted } from 'vue'
 
+const mouse = {
+  mounted: (el: any, binding: any, vnode: any, prevVnode: any) => {}
+}
 export default function directive(app: App) {
   app.directive('touch', (el, binding) => {
     let time: any
@@ -8,13 +11,13 @@ export default function directive(app: App) {
       lock = true
       time = setTimeout(() => {
         lock = false
-      }, 1000)
+      }, 500)
     }
     el.onmouseup = () => {
-      if (!lock) {
-        binding.value()
-      }
       clearTimeout(time)
+      if (!lock) {
+        binding.value(binding.arg, el)
+      }
     }
   })
 }
