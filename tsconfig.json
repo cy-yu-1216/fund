@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -10,6 +12,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
+    // "allowSyntheticDefaultImports": true,
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
     "baseUrl": ".",
@@ -18,7 +21,13 @@
     },
     "noImplicitAny": true // 在表达式和声明上有隐含的 any类型时报错
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "src/**/*.tsx"
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

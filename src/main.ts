@@ -8,6 +8,10 @@ import './permission'
 // import { ElMessage } from 'element-plus'
 import iconSvg from './base-ui/icon-svg/index.vue'
 import directive from './utils/directive'
+import dayjs from 'dayjs'
+// dayjs().format()
+// console.log(dayjs().format())
+
 // let flag = navigator.userAgent
 //   .toLowerCase()
 //   .match(
@@ -25,4 +29,6 @@ app.use(router)
 app.use(pinia)
 
 app.component('icon-svg', iconSvg)
+app.config.globalProperties.$dayjs = dayjs()
+
 app.mount('#app')
