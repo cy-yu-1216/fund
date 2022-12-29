@@ -5,17 +5,21 @@ import { login } from '@/api/common'
 export const userMsgStore = defineStore('userMsg', {
   state: () => {
     return {
-      userName: '',
-      userId: '',
-      token: ''
+      username: localCache.getCache('username') || '',
+      nickname: localCache.getCache('nickname') || 'cccc',
+      token: localCache.getCache('token') || ''
+      // baseData: localCache.getCache('baseData') || ''
     }
   },
   getters: {
-    getUserName: (state): string => {
-      return state.userName
+    getUsername: (state): string => {
+      return state.username
     },
-    getUserId: (state): string => {
-      return state.userId
+    getNickname: (state): string => {
+      return state.nickname
+    },
+    getToken: (state): string => {
+      return state.token
     }
   },
   actions: {
@@ -26,7 +30,12 @@ export const userMsgStore = defineStore('userMsg', {
           let res = await login(loginMsg)
           //存储token
           localCache.setCache('token', res.token)
-          this.userName = res.userName
+          localCache.setCache('username', res.username)
+          localCache.setCache('nickname', res.nickname)
+          localCache.setCache('baseData', res)
+          this.nickname = res.nickname
+          this.username = res.username
+          this.token = res.token
           resolve(res)
         } catch (error) {
           reject(error)

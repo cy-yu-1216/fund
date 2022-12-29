@@ -33,24 +33,27 @@
         </div>
       </div>
       <img src="@/assets/header.png" alt="" />
-      <span>陈土豆</span>
+      <span>{{ userMsgStore.getNickname }}</span>
     </div>
   </nav>
 </template>
 
 <script setup lang="ts">
-import { routes } from '@/router/index'
 import { mainStore } from '@/store/main-store'
 import { useRouter } from 'vue-router'
-import { onMounted, reactive, ref } from 'vue'
+import { userMsgStore } from '@/store/user-msg-store'
+import { onMounted, ref } from 'vue'
+
 //拿到导航列表
 import type { RouteRecordRaw } from 'vue-router'
-const navList: RouteRecordRaw[] = reactive([])
-const homeRouter = routes.find((res) => res.name == 'home')
-if (homeRouter) {
-  navList.push(...(homeRouter.children as RouteRecordRaw[]))
-}
-
+defineProps({
+  navList: {
+    type: Array<RouteRecordRaw>,
+    default() {
+      return []
+    }
+  }
+})
 //当前tab
 let activeItem = ref(mainStore.activeRoute)
 //路由跳转
