@@ -1,3 +1,9 @@
+//按钮
+declare interface IconType {
+  name: string
+  icon: string
+}
+
 // 登录
 declare interface LoginType {
   username: string
